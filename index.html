@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社团招新智能匹配平台</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>社团招新智能匹配平台</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#clubs">社团浏览</a></li>
+                    <li><a href="#activities">活动高光</a></li>
+                    <li><a href="#qa">Q&A</a></li>
+                    <li><a href="#profile">个人中心</a></li>
+                    <li><a href="#login" id="login-btn">登录/注册</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- 首页推荐区域 -->
+        <section id="home" class="hero">
+            <div class="container">
+                <h2>找到最适合你的社团</h2>
+                <p>基于你的兴趣、技能和时间，智能匹配最适合的社团</p>
+                <button id="start-btn" class="btn-primary">开始匹配</button>
+            </div>
+        </section>
+
+        <!-- 兴趣标签选择 -->
+        <section id="interest-selection" class="hidden">
+            <div class="container">
+                <h2>选择你的兴趣标签</h2>
+                <div class="tag-container">
+                    <div class="tag" data-tag="学术类">学术类</div>
+                    <div class="tag" data-tag="文艺类">文艺类</div>
+                    <div class="tag" data-tag="体育类">体育类</div>
+                    <div class="tag" data-tag="科技类">科技类</div>
+                    <div class="tag" data-tag="志愿类">志愿类</div>
+                    <div class="tag" data-tag="创业类">创业类</div>
+                    <div class="tag" data-tag="其他">其他</div>
+                </div>
+                <button id="next-btn" class="btn-primary">下一步</button>
+            </div>
+        </section>
+
+        <!-- 技能特长填写 -->
+        <section id="skill-selection" class="hidden">
+            <div class="container">
+                <h2>填写你的技能特长</h2>
+                <textarea id="skills" placeholder="请输入你的技能特长，如：摄影、写作、编程等"></textarea>
+                <button id="skill-next-btn" class="btn-primary">下一步</button>
+            </div>
+        </section>
+
+        <!-- 时间可用性 -->
+        <section id="time-selection" class="hidden">
+            <div class="container">
+                <h2>选择你的空闲时间</h2>
+                <div class="time-slots">
+                    <div class="time-slot" data-time="周一晚">周一晚</div>
+                    <div class="time-slot" data-time="周二晚">周二晚</div>
+                    <div class="time-slot" data-time="周三晚">周三晚</div>
+                    <div class="time-slot" data-time="周四晚">周四晚</div>
+                    <div class="time-slot" data-time="周五晚">周五晚</div>
+                    <div class="time-slot" data-time="周六">周六</div>
+                    <div class="time-slot" data-time="周日">周日</div>
+                </div>
+                <button id="time-next-btn" class="btn-primary">开始匹配</button>
+            </div>
+        </section>
+
+        <!-- 匹配结果 -->
+        <section id="recommendation" class="hidden">
+            <div class="container">
+                <h2>为你推荐的社团</h2>
+                <div class="club-list" id="club-list">
+                    <!-- 社团卡片将通过 JavaScript 动态生成 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 社团浏览 -->
+        <section id="clubs">
+            <div class="container">
+                <h2>社团浏览</h2>
+                <div class="filter">
+                    <select id="club-type">
+                        <option value="all">全部类型</option>
+                        <option value="学术类">学术类</option>
+                        <option value="文艺类">文艺类</option>
+                        <option value="体育类">体育类</option>
+                        <option value="科技类">科技类</option>
+                        <option value="志愿类">志愿类</option>
+                        <option value="创业类">创业类</option>
+                    </select>
+                    <input type="text" id="search-input" placeholder="搜索社团名称">
+                    <button id="search-btn" class="btn-secondary">搜索</button>
+                </div>
+                <div class="club-grid" id="club-grid">
+                    <!-- 社团卡片将通过 JavaScript 动态生成 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 个人中心 -->
+        <section id="profile" class="hidden">
+            <div class="container">
+                <h2>个人中心</h2>
+                <div class="profile-info">
+                    <h3>个人信息</h3>
+                    <div id="user-info">
+                        <p>请先登录</p>
+                    </div>
+                </div>
+                <div class="application-status">
+                    <h3>报名状态</h3>
+                    <div id="application-list">
+                        <p>暂无报名记录</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 活动高光记录 -->
+        <section id="activities">
+            <div class="container">
+                <h2>社团活动高光记录</h2>
+                <div class="activity-grid">
+                    <div class="activity-card">
+                        <h3>2025年社团文化节</h3>
+                        <p>各社团展示特色活动，吸引了 thousands of students参与</p>
+                        <img src="https://picsum.photos/seed/culture/600/400" alt="社团文化节">
+                    </div>
+                    <div class="activity-card">
+                        <h3>计算机协会编程大赛</h3>
+                        <p>成功举办校际编程比赛，培养学生编程能力</p>
+                        <img src="https://picsum.photos/seed/programming/600/400" alt="编程大赛">
+                    </div>
+                    <div class="activity-card">
+                        <h3>志愿者协会公益活动</h3>
+                        <p>组织社区服务，传递爱心与温暖</p>
+                        <img src="https://picsum.photos/seed/charity/600/400" alt="公益活动">
+                    </div>
+                    <div class="activity-card">
+                        <h3>舞蹈协会年度公演</h3>
+                        <p>精彩的舞蹈表演，展示社团风采</p>
+                        <img src="https://picsum.photos/seed/danceperformance/600/400" alt="舞蹈公演">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Q&A部分 -->
+        <section id="qa">
+            <div class="container">
+                <h2>常见问题解答</h2>
+                <div class="qa-container">
+                    <div class="qa-item">
+                        <h3>Q: 平台的匹配规则是怎样的？</h3>
+                        <p>A: 我们的匹配算法基于三个维度：兴趣类型匹配（40%）、技能特长匹配（30%）和时间安排匹配（30%）。系统会根据您选择的兴趣标签、填写的技能特长和空闲时间，为您推荐最适合的社团。</p>
+                    </div>
+                    <div class="qa-item">
+                        <h3>Q: 如何查看完整的社团列表？</h3>
+                        <p>A: 您可以点击<a href="#clubs">社团浏览</a>页面，查看所有社团的详细信息。在该页面，您可以通过类型筛选和关键词搜索找到感兴趣的社团。</p>
+                    </div>
+                    <div class="qa-item">
+                        <h3>Q: 报名社团需要哪些信息？</h3>
+                        <p>A: 报名时需要填写姓名、年级、专业和联系方式（电话）等基本信息，以便社团联系您参加面试或通知录取结果。</p>
+                    </div>
+                    <div class="qa-item">
+                        <h3>Q: 社团面试有什么要求？</h3>
+                        <p>A: 不同社团的面试要求不同，具体要求会在每个社团的详细信息页面显示。一般来说，社团会根据自身特点提出相应的要求，如技能基础、兴趣程度等。</p>
+                    </div>
+                    <div class="qa-item">
+                        <h3>Q: 如何查看我的报名状态？</h3>
+                        <p>A: 登录后，您可以在<a href="#profile">个人中心</a>查看所有报名记录和状态。系统会实时更新您的报名进展。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 登录/注册模态框 -->
+    <div id="login-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-tabs">
+                <button class="tab-btn active" data-tab="login">登录</button>
+                <button class="tab-btn" data-tab="register">注册</button>
+            </div>
+            <div class="tab-content" id="login-tab">
+                <h3>用户登录</h3>
+                <form id="login-form">
+                    <input type="text" placeholder="用户名" required>
+                    <input type="password" placeholder="密码" required>
+                    <button type="submit" class="btn-primary">登录</button>
+                </form>
+            </div>
+            <div class="tab-content hidden" id="register-tab">
+                <h3>用户注册</h3>
+                <form id="register-form">
+                    <input type="text" placeholder="用户名" required>
+                    <input type="password" placeholder="密码" required>
+                    <input type="email" placeholder="邮箱" required>
+                    <button type="submit" class="btn-primary">注册</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 社团招新智能匹配平台</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
